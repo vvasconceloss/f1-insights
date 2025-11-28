@@ -12,6 +12,7 @@ The project provides structured views for drivers, constructors, standings, sche
 
 * React.js
 * TypeScript
+* Shadcn/UI
 * TailwindCSS
 * f1api.dev (external API)
 
