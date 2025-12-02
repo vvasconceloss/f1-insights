@@ -9,3 +9,8 @@ export const devF1 = axios.create({
   timeout: 10000,
   baseURL: "https://f1api.dev/api/",
 });
+
+export const countriesAPI = axios.create({
+  timeout: 10000,
+  baseURL: "https://restcountries.com/v3.1/"
+})
