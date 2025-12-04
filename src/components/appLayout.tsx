@@ -1,6 +1,6 @@
 import { SiF1 } from "react-icons/si";
-import { Separator } from "../ui/separator";
-import { AppSidebar } from "@/components/sidebar/appSidebar";
+import { Separator } from "./ui/separator";
+import { AppSidebar } from "@/components/appSidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const Layout = ({ children, current_menu }: { children: React.ReactNode, current_menu: string }) => {

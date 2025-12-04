@@ -71,9 +71,9 @@ export function AppSidebar({ current_menu, ...props }: { current_menu: string })
                         <SidebarMenuSubButton 
                           asChild
                           className={`
-                            text-[#15151E] rounded-none border-b-2 transition-all ease-in-out ${current_menu == item.title 
-                            ? 'border-b-[#FF1E00]' 
-                            : 'hover:border-b-[#FF1E00]'}`}
+                            text-[#15151E] rounded-none border-l-2 border-transparent transition-all ease-in-out ${current_menu == item.title 
+                            ? 'border-l-[#FF1E00]' 
+                            : 'hover:border-l-[#FF1E00]'}`}
                         >
                           <Link to={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
