@@ -1,7 +1,7 @@
 import type { Team } from "./Team";
 import type { Driver } from "./Driver";
 
-export interface Result {
+export type Result = {
   position: number;
   points: number;
   grid: number;

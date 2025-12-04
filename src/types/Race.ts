@@ -1,7 +1,7 @@
 import type { Result } from "./Result";
 import type { Circuit } from "./Circuit";
 
-export interface Race {
+export type Race = {
   round: number;
   date: string;
   time: string;
@@ -12,7 +12,7 @@ export interface Race {
   results: Result[];
 }
 
-export interface LastRaceResponse {
+export type LastRace = {
   api: string;
   url: string;
   limit: number;

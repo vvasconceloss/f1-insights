@@ -1,4 +1,4 @@
-export interface Team {
+export type Team = {
   teamId: string;
   teamName: string;
   nationality: string;

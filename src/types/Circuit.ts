@@ -1,4 +1,4 @@
-export interface Circuit {
+export type Circuit = {
   circuitId: string;
   circuitName: string;
   country: string;
