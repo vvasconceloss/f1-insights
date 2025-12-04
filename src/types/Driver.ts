@@ -1,10 +1,13 @@
-export interface Driver {
+import type { Country } from "./Country";
+
+export type Driver = {
   driverId: string;
-  number: number;
-  shortName: string;
-  url: string;
   name: string;
   surname: string;
-  nationality: string;
+  shortName: string;
+  number: number;
   birthday: string;
+  nationality: string;
+  country: Country
+  url: string;
 }
