@@ -1,24 +1,41 @@
-import { fetchLastRaceResult } from "@/services/lastRaceService";
 import type { LastRace } from "@/types/Race";
-import { useEffect, useState } from "react";
+import { fetchLastRaceResult } from "@/services/lastRaceService";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useLastRaceResult = () => {
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>("");
   const [data, setData] = useState<LastRace | null>(null);
 
-  useEffect(() => {
+  const controllerRef = useRef<AbortController | null>(null);
+
+  const load = useCallback(async () => {
+    setError(null);
+    setLoading(true);
+
+    controllerRef.current?.abort();
     const controller = new AbortController();
+    
+    controllerRef.current = controller;
 
-    fetchLastRaceResult(controller.signal)
-      .then(setData)
-      .catch((err) => {
-        if (err.name !== "CanceledError") setError("Failed to load last race");
-      })
-      .finally(() => setLoading(false));
-
-    return () => controller.abort();
+    try {
+      const res = await fetchLastRaceResult(controller.signal);
+      setData(res);
+    } catch (err: any) {
+      if (err?.name !== "CanceledError") setError("Failed to load last race");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  return { data, loading, error };
-}
+  useEffect(() => {
+    load();
+    return () => controllerRef.current?.abort();
+  }, [load]);
+
+  const refetch = useCallback(() => {
+    void load();
+  }, [load]);
+
+  return { data, loading, error, refetch };
+};
