@@ -1,15 +1,10 @@
+import type { LastRace } from "@/types/Race";
 import { normalizeGrid } from "@/utils/driver/normalizeGrid";
-import { useLastRaceResult } from "@/hooks/useLastRaceResult";
 import { DriverMovement } from "@/components/drivers/driverMovement";
 import { normalizePosition } from "@/utils/driver/normalizePosition";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-export const LastRaceStandingWidget = () => {
-  const { data, loading, error } = useLastRaceResult();
-
-  if (error) return <>{error}</>;
-  if (loading) return <>Loading…</>;
-
+export const LastRaceStandingWidget = ({ data }: { data: LastRace | null }) => {
   return (
     <section>
       <article className="py-5">
