@@ -17,7 +17,7 @@ const Layout = ({ children, current_menu }: { children: React.ReactNode, current
             <SiF1 className="w-14 h-14" />
           </div>
         </header>
-        <main className="p-5">
+        <main className="p-5 w-full h-full">
           { children }
         </main>
       </SidebarInset>
